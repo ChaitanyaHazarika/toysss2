@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Verification</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="icon-website.png" sizes="32x32" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>MIKU TOYS</h1>
+    <center>
+        <div class="container">
+            <h4>Phone Number Verification</h4>
+            <input id="phonenumber" type="text" class="form form-control" placeholder="Phone Number eg: +9192....">
+            <p>Please use country code for eg: +91123... </p>
+            <button class="btn btn-primary" id="send">Send</button>
+            <br>
+            <br>
+            <div id="recaptcha-container"></div>
+            <br>
+            <p id="otpinfo"></p>
+            <br>
+            <input id="code" class="form form-control" placeholder="OTP">
+            <br>
+            <button class="btn btn-success" id="verify">Verify</button>
+        </div>
+    </center>
+
+    <!--Styleee-->
+    <style>
+        body {
+            text-align: center;
+           
+        }
+        body{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	-webkit-animation: gradient 15s ease infinite;
+	        animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+ 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+        h4 {
+            color: white;
+        }
+
+        .container {
+            margin-top: 300px;
+        }
+
+        h1 {
+            color: white;
+            font-family: BIGJOHN;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: BIGJOHN;
+            src: url(BIG\ JOHN.otf);
+        }
+
+        .form {
+            width: 300px;
+        }
+
+        p {
+            color: white;
+            text-decoration: underline;
+        }
+
+        #code,
+        #verify {
+            display: none;
+        }
+    </style>
+    <!--Script-->
+    <script type="module">
+        //firebase stuff
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
+        import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkDL6o5zIadycIqJoROr48mqUB3EkZab0",
+            authDomain: "mikutoys-d47de.firebaseapp.com",
+            databaseURL: "https://mikutoys-d47de-default-rtdb.firebaseio.com",
+            projectId: "mikutoys-d47de",
+            storageBucket: "mikutoys-d47de.appspot.com",
+            messagingSenderId: "453934610008",
+            appId: "1:453934610008:web:092e9ad475e2c675773c2d"
+        };
+        //setting values
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+
+        //recaptcha
+        window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
+            'size': 'normal', 'expired-callback': () => {
+                alert("reCAPTCHA Expired Please Solve Again ")
+            }
+        }, auth)
+        recaptchaVerifier.render()
+
+
+        //sending msg
+        document.getElementById('send').addEventListener('click', () => {
+            const appVerifier = window.recaptchaVerifier
+            const phoneNumber = document.getElementById("phonenumber").value;
+            signInWithPhoneNumber(auth, phoneNumber, appVerifier).then((confirmationResult) => {
+                //code sent
+                document.getElementById('otpinfo').innerHTML = "OTP Sent"
+                window.confirmationResult = confirmationResult
+                document.getElementById('code').style.display = "block";
+                document.getElementById('verify').style.display = "block"
+
+
+                console.log("yay");
+            }).catch((error) => {
+                //code not sent
+                console.log("noyes");
+                console.log(error);
+                document.getElementById("otpinfo").innerHTML = "ERROR please try again";
+            })
+        })
+
+        //verify
+        document.getElementById('verify').addEventListener('click', () => {
+            const code = document.getElementById('code').value;
+            confirmationResult.confirm(code).then((reuslt) => {
+                const phoneNumber = document.getElementById("phonenumber").value;
+                console.log("hmm");
+                localStorage.setItem('phonenumber', phoneNumber)
+                window.location = "signup.html"
+
+            }).catch((error) => {
+                console.log("nohmmm");
+                console.log(error);
+            })
+        })
+
+    </script>
+</body>
+
+</html>
