@@ -1,5 +1,7 @@
 if (localStorage.getItem('LoginStatus') == "No") {
     window.location= "index.html"
+}else if(localStorage.getItem('LoginStatus') == "Yes"){
+    window.location= "home.html"
 }
 var phone_number = ""
 var password = ""
