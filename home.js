@@ -54,3 +54,12 @@ document.getElementById('account').addEventListener('click', () =>{
 document.getElementById('cart').addEventListener('click', () =>{
   window.location ="cart.html"
 })
+document.getElementById('logout').addEventListener('click', (e)=>{
+  console.log(e);
+  localStorage.removeItem('LoginStatus');
+  localStorage.removeItem('username');
+  localStorage.removeItem('password');
+  localStorage.removeItem('phonenumber');
+  localStorage.removeItem('items');
+  window.location= "index.html"
+})
