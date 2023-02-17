@@ -186,33 +186,7 @@
 
             })
         })
-        window.addEventListener('keypress', (e)=>{
-            console.log(e);
-            if (e.keyCode == 13) {
-                const appVerifier = window.recaptchaVerifier
-            const phoneNumber = document.getElementById("phonenumber").value;
-            signInWithPhoneNumber(auth, phoneNumber, appVerifier).then((confirmationResult) => {
-                //code sent
-                document.getElementById('otpinfo').innerHTML = "OTP Sent"
-                window.confirmationResult = confirmationResult
-                document.getElementById('code').style.display = "block";
-                document.getElementById('verify').style.display = "block"
-
-
-                console.log("yay");
-            }).catch((error) => {
-                //code not sent
-                console.log("noyes");
-                if (error.code == "auth/invalid-phone-number") {
-                    console.log("l");
-                    document.getElementById("otpinfo").innerHTML = "Invalid Phone Number OR Invalid Format";
-                }
-                console.log(error.code)
-               
-                
-            })
-            }
-        })
+      
     </script>
 </body>
 
