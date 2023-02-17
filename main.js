@@ -27,8 +27,13 @@ firebase.initializeApp(firebaseConfig);
 function signUp() {
     window.location = "phoneverification.html"
 }
-
 //login
+window.addEventListener("keypress", (e)=> {
+  keycode= e.keyCode
+  if (keycode == 13) {
+    login()
+  }
+})
 function login() {
   if (document.getElementById("username").value == "") {
     alert("Please enter a name")

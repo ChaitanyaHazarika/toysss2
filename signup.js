@@ -18,7 +18,11 @@ const firebaseConfig = {
     appId: "1:453934610008:web:092e9ad475e2c675773c2d"
 }
 firebase.initializeApp(firebaseConfig);
-
+window.addEventListener("keypress", (e)=>{
+    if (e.keyCode == 13) {
+        signup()
+    }
+})
 //signup
 function signup() {
     //matching password
