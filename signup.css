@@ -1,41 +1,23 @@
 body{
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	-webkit-animation: gradient 15s ease infinite;
-	        animation: gradient 15s ease infinite;
-	height: 100vh;
+    background-image: url(abstract-psychedelic-papercut-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-@-webkit-keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
- 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+
 .login_div{
-    margin-top: 200px;
+    margin-top: 100px;
     width:  35%;
     height: 550px;
     padding: 20px;
     border-radius: 20px;
+    background-color: white;
 }
-
+#logo{
+    height: 90px;
+    width: 90px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
 #Loginbtn, #SignUpbtn{
     margin-top: 30px;
     width: 90%;
@@ -43,26 +25,16 @@ body{
 }
 h3{
     font-family: sans-serif;
-    color: white;
+    color: black
 }
 h1{
-    font-family: BIGJOHN; 
+    font-family: 'Dancing Script', cursive;
     font-weight: bold;
-    
+    font-size: 100px;
     color: white;
 }
-@font-face {
-    font-family: Bloomi;
-    src: url("Bloomi\ Almond\ \ Regular.ttf");
-}
-@font-face {
-    font-family: MoglenDemo;
-    src: url("Moglan_DEMO.ttf");
-}
-@font-face {
-    font-family: BIGJOHN;
-    src: url(BIG\ JOHN.otf);
-}
+
+
 @media(max-width: 800px){
     .login_div{
         width: 100%;

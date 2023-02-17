@@ -18,10 +18,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>MIKU TOYS</h1>
+    <h1>Turtle Crochet.u3u</h1>
     <center>
         <div class="container">
             <h4>Phone Number Verification</h4>
@@ -42,45 +45,21 @@
 
     <!--Styleee-->
     <style>
+        #send {
+            width: 120px;
+            border-radius: 20px;
+        }
+
         body {
             text-align: center;
 
         }
 
         body {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            -webkit-animation: gradient 15s ease infinite;
-            animation: gradient 15s ease infinite;
-            height: 100vh;
-        }
+            background-image: url(abstract-psychedelic-papercut-background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
 
-        @-webkit-keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
         h4 {
@@ -88,20 +67,18 @@
         }
 
         .container {
-            margin-top: 300px;
+            margin-top: 200px;
         }
 
         h1 {
             color: white;
-            font-family: BIGJOHN;
+            font-family: 'Dancing Script', cursive;
             letter-spacing: 2px;
             font-weight: bold;
+            font-size: 100px;
         }
 
-        @font-face {
-            font-family: BIGJOHN;
-            src: url(BIG\ JOHN.otf);
-        }
+       
 
         .form {
             width: 300px;
@@ -115,6 +92,11 @@
         #code,
         #verify {
             display: none;
+        }
+        @media(max-width: 800px){
+            h1{
+                font-size: 30px;
+            }
         }
     </style>
     <!--Script-->
@@ -167,10 +149,10 @@
                     document.getElementById("otpinfo").innerHTML = "Invalid Phone Number OR Invalid Format";
                 }
                 console.log(error.code)
-               
-                
+
+
             })
-            })
+        })
 
         //verify
         document.getElementById('verify').addEventListener('click', () => {
@@ -179,6 +161,7 @@
                 const phoneNumber = document.getElementById("phonenumber").value;
                 console.log("hmm");
                 localStorage.setItem('phonenumber', phoneNumber)
+                localStorage.setItem('LoginStatus', "Yes")
                 window.location = "signup.html"
 
             }).catch((error) => {
@@ -186,7 +169,7 @@
 
             })
         })
-      
+
     </script>
 </body>
 

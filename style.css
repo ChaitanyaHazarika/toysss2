@@ -1,67 +1,42 @@
 body{
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	-webkit-animation: gradient 15s ease infinite;
-	        animation: gradient 15s ease infinite;
-	height: 100vh;
-}
-@-webkit-keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
- 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    background-image: url(abstract-psychedelic-papercut-background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+#logo{
+    height: 90px;
+    width: 90px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
 .login_div{
-    margin-top: 200px;
+    margin:100px;
     width:  35%;
-    height: 400px;
-    padding: 20px;
+    height: 580px;
+    padding: 30px;
     border-radius: 20px;
 }
 
 #Loginbtn, #SignUpbtn{
     margin-top: 30px;
     width: 90%;
-    
+    border-radius: 50px;
+    width: 50%;
 }
 h3{
     font-family:sans-serif;
-    color: white;
+    color: black;
 }
 h1{
-    font-family: BIGJOHN;
+    font-family: 'Dancing Script', cursive;
     font-weight: bold;
-    
+    font-size: 100px;
     color: white;
 }
-@font-face {
-    font-family: Bloomi;
-    src: url("Bloomi\ Almond\ \ Regular.ttf");
-}
-@font-face {
-    font-family: BIGJOHN;
-    src: url(BIG\ JOHN.otf);
-}
+
 #note{
-    color: white;
+    color: black;
 }
 #forgotpass{
     color: white;
@@ -72,6 +47,13 @@ span{
 }
 @media(max-width: 800px){
     .login_div{
-        width: 100%;
+        width: 93%;
+        margin-top: 10px;
+        left: 0px;
+        margin-left: 10px;
     }
+   
+}
+hr{
+    width: 80%;
 }
