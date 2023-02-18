@@ -13,27 +13,29 @@
         <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <script  defer src="main.js"></script>
     <center>
-        <h1>THE NAV TEST</h1>
-        <div class=" login_div">
+        <h1>Turtle Crochet.u3u </h1>
+        <div class=" login_div" style="background-color: white;">
+            <img src="TurtleCrochet.png" id="logo">
             <h3>Name</h3>
             <label style="color: red; font-size: medium;">NOTE: Name is also case sensitive</label>
             <input type="text" class="form-control" id="username">
             <br>
             <h3>Password</h3>
             <input type="password" class="form-control inputs" id="password">
-            <br>
-            <label id="note"></label><br>
-            <a href="#" id="forgotpass">Forgot Password</a>
-            <br>
+            <label id="note"></label>
+            <hr>
             <button class="btn btn-info" onclick="login()" id="Loginbtn">Login</button>
             <br>
             <button class="btn btn-warning " id="SignUpbtn" onclick="signUp()" >Sign Up</button>
+            
         </div>
     
     </center>
