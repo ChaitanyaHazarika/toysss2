@@ -1,5 +1,6 @@
 setTimeout(() => {
   localStorage.setItem('items', "")
+  localStorage.setItem('LoginStatus', "")
 }, 2000);
 
 
