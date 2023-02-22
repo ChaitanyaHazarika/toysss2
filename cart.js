@@ -50,6 +50,8 @@ console.log(items)
 //MESSAGE
 if (items.length == 0) {
 	document.getElementById('msg').style.display = 'block'
+	loader.style.display= "none"
+	page.style.opacity = 1
 } else {
 	document.getElementById('msg').style.display = 'none'
 }
@@ -159,10 +161,10 @@ if (counter== 1) {
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
 			
+		
+		})
 		loader.style.display= "none"
 		page.style.opacity = 1
-		})
-	
 	}, 2000);
 
 
