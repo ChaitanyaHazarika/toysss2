@@ -21,9 +21,8 @@
 <body>
     <script  defer src="signup.js"></script>
     <center>
-        <h1>Turtle Crochet.u3u</h1>
       
-        <div class=" login_div">
+        <!-- <div class=" login_div">
             <img src="TurtleCrochet.png" id="logo">
             <h3>Name</h3>
             <input type="text" class="form-control" id="name" placeholder="Name">
@@ -36,7 +35,27 @@
 
             <br>
             <button class="btn btn-warning " id="SignUpbtn" onclick="signup()">Sign Up</button>
-        </div>
+        </div> -->
+        <div id="mainpage" class="login_div">
+            <div id="logindiv" style="float: right;">
+                <h1 style="font-weight: bold;">SignUp</h1>
+                <label style="color: red; font-size: medium;">NOTE: Name is also case sensitive</label>
+                <input type="text" id="name" class="inputs" placeholder="Username">
+                
+                <input type="password" id="createpassword" class="inputs" placeholder="Password">
+                <br>
+                <br>
+                <input type="password" id="Confirmpassword" class="inputs" placeholder="Confirm password">
+                <label id="note"></label>
+                <br>
+                <br>
+    
+                <button class="button" id="SignUpbtn" onclick="signup()">Sign Up</button>
+            </div>
+            <div id="picturediv" style="float: left;">
+                <img src="TurtleCrochet.png" id="logo">
+            </div>
+          </div>
 
     </center>
 

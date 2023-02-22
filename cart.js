@@ -42,9 +42,8 @@ var class4= ""
 var class5= ""
 const length = items.length;
 var counter= 0
-
-
-
+var loader= document.getElementById('preloader');
+var page= document.getElementById('everything');
 
 console.log(items)
 
@@ -101,8 +100,9 @@ if (counter== 1) {
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-	
-	}, 1300);
+		loader.style.display= "none"
+		page.style.opacity = 1
+	}, 2000);
 
 	
 
@@ -158,9 +158,12 @@ if (counter== 1) {
 			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
+			
+		loader.style.display= "none"
+		page.style.opacity = 1
 		})
 	
-	}, 1300);
+	}, 2000);
 
 
 
@@ -234,7 +237,10 @@ if (counter== 1) {
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-	}, 1300);
+		
+		loader.style.display= "none"
+		page.style.opacity = 1
+	}, 2000);
 
 
 
@@ -329,7 +335,10 @@ if (counter== 1) {
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-	}, 1300);
+		
+		loader.style.display= "none"
+		page.style.opacity = 1
+	}, 2000);
 
 
 } else if (counter == 5) {
@@ -429,7 +438,10 @@ if (counter== 1) {
 			items= []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-	}, 1300);
+		
+		loader.style.display= "none"
+		page.style.opacity = 1
+	}, 2000);
 
 }
 

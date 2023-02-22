@@ -63,3 +63,9 @@ document.getElementById('logout').addEventListener('click', (e)=>{
   localStorage.removeItem('items');
   window.location= "index.html"
 })
+const toggleButton= document.getElementsByClassName('toggle-button')[0]
+const navbarLinks= document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', ()=> {
+    navbarLinks.classList.toggle('active')
+})

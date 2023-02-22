@@ -55,6 +55,6 @@ function signup() {
         //alert2
         alert("Password does not match")
     }
-    
+    document.getElementById("aikjdhadh").style.opacity= 0
 }
    
