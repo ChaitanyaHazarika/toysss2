@@ -48,9 +48,6 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenelements= document.querySelectorAll(".hidden")
 hiddenelements.forEach((el) => observer.observe(el));
 
-document.getElementById('account').addEventListener('click', () =>{
-  window.location= "account.html"
-})
 document.getElementById('cart').addEventListener('click', () =>{
   window.location ="cart.html"
 })

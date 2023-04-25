@@ -57,4 +57,11 @@ function signup() {
     }
     document.getElementById("aikjdhadh").style.opacity= 0
 }
+window.addEventListener('onload', () =>{
+    hello()
+})
+function hello(){
+    console.log("HELLOOOo")
+
+} 
    

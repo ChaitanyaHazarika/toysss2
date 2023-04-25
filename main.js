@@ -1,5 +1,5 @@
 setTimeout(() => {
-  localStorage.setItem('items', "")
+  localStorage.setItem('items', JSON.stringify([]))
   localStorage.setItem('LoginStatus', "")
 }, 2000);
 

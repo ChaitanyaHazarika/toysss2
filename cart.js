@@ -35,22 +35,22 @@ var display_item4 = ""
 var display_item5 = ""
 var items = JSON.parse(localStorage.getItem('items'))
 var total = 0
-var class1= ""
-var class2= ""
-var class3= ""
-var class4= ""
-var class5= ""
+var class1 = ""
+var class2 = ""
+var class3 = ""
+var class4 = ""
+var class5 = ""
 const length = items.length;
-var counter= 0
-var loader= document.getElementById('preloader');
-var page= document.getElementById('everything');
+var counter = 0
+var loader = document.getElementById('preloader');
+var page = document.getElementById('everything');
 
 console.log(items)
 
 //MESSAGE
 if (items.length == 0) {
 	document.getElementById('msg').style.display = 'block'
-	loader.style.display= "none"
+	loader.style.display = "none"
 	page.style.opacity = 1
 } else {
 	document.getElementById('msg').style.display = 'none'
@@ -58,23 +58,24 @@ if (items.length == 0) {
 
 if (length == 1) {
 	counter = 1
-}else if(length == 2){
+} else if (length == 2) {
 	counter = 2
-}else if(length == 3){
+} else if (length == 3) {
 	counter = 3
-}else if(length == 4){
+} else if (length == 4) {
 	counter = 4
-}else if(length == 5){
+} else if (length == 5) {
 	counter = 5
 }
 
 
-if (counter== 1) {
+if (counter == 1) {
 	//ONE ITEM
 	item1 = items[0]
-	counter=1
-	class1= item1.split(" ").join("")
+	counter = 1
+	class1 = item1.split(" ").join("")
 	console.log(class1);
+
 
 	const dbRef = ref(getDatabase());
 	get(child(dbRef, "/Items/" + item1)).then((snapshot) => {
@@ -83,7 +84,7 @@ if (counter== 1) {
 			childKey = snapshot.val()
 			item1_price = childKey.price
 			console.log(item1_price);
-			total= item1_price
+			total = item1_price
 		} else {
 			console.log("No data available");
 		}
@@ -95,29 +96,31 @@ if (counter== 1) {
 
 	//display
 	setTimeout(() => {
-		display_item1 = "<div class=" + class1 + "><img src='D' class='item_img'><h4 class='item_name'>" + item1 + "</h4><br><br><h5 id='price' class='price'>₹		" + item1_price + "</h5><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button><br><h3>Total : ₹ "+ total+"</h3><button class= 'btn btn-success' id='checkout'>Checkout</button></div>"
+		display_item1 = "<div class=" + class1 + "><img src='D' class='item_img'><h4 class='item_name'>" + item1 + "</h4><br><br><h5 id='price' class='price'>₹		" + item1_price + "</h5><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button><br><h3>Total : ₹ " + total + "</h3><button class= 'btn btn-success' id='checkout' onclick='change()'>Checkout</button></div>"
 		document.getElementById('items').innerHTML += display_item1
-		document.getElementById("remove").addEventListener('click', ()=>{
-			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
-			items= []
+		document.getElementById("remove").addEventListener('click', () => {
+			document.getElementById("items").innerHTML = "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
+			items = []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-		loader.style.display= "none"
+		loader.style.display = "none"
 		page.style.opacity = 1
+		localStorage.setItem("total", total)
+		
 	}, 2000);
 
-	
+
 
 
 
 } else if (counter == 2) {
-	counter=2
+	counter = 2
 	//TWO ITEMS
 	item1 = items[0]
-	class1= item1.split(" ").join("")
+	class1 = item1.split(" ").join("")
 	console.log(class1);
 
-	class2= item2.split(" ").join("")
+	class2 = item2.split(" ").join("")
 	console.log(class1);
 	item2 = items[1]
 
@@ -127,7 +130,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item1_price = childKey.price
-			total= item1_price
+			total = item1_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -140,7 +143,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item2_price = childKey.price
-			total= item1_price+item2_price
+			total = item1_price + item2_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -153,17 +156,18 @@ if (counter== 1) {
 	//display
 	setTimeout(() => {
 		display_item1 = "<div class=" + class1 + "><img src='D' class='item_img'><h4 class='item_name'>" + item1 + "</h4><br><br><h5 id='price' class='price'>₹		" + item1_price + "</h5><br><hr class='line'></div>"
-		display_item2 = "<div class=" + class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ "+ total+"</h3><button class= 'btn btn-success' id='checkout'>Checkout</button></div>"
+		display_item2 = "<div class=" + class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ " + total + "</h3><button class= 'btn btn-success' id='checkout' onclick='change()'>Checkout</button></div>"
 		document.getElementById('items').innerHTML += display_item1
 		document.getElementById('items').innerHTML += display_item2
-		document.getElementById("remove").addEventListener('click', ()=>{
-			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
-			items= []
+		document.getElementById("remove").addEventListener('click', () => {
+			document.getElementById("items").innerHTML = "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
+			items = []
 			localStorage.setItem("items", JSON.stringify(items))
-			
-		
+
 		})
-		loader.style.display= "none"
+		localStorage.setItem("total", total)
+		
+		loader.style.display = "none"
 		page.style.opacity = 1
 	}, 2000);
 
@@ -172,17 +176,17 @@ if (counter== 1) {
 
 
 } else if (counter == 3) {
-	counter=3
+	counter = 3
 	//THREE ITEMS
 	item1 = items[0]
 	item2 = items[1]
 	item3 = items[2]
 
-	class1= item1.split(" ").join("")
+	class1 = item1.split(" ").join("")
 	console.log(class1);
-	class2= item2.split(" ").join("")
+	class2 = item2.split(" ").join("")
 	console.log(class1);
-	class3= item3.split(" ").join("")
+	class3 = item3.split(" ").join("")
 	console.log(class1);
 	const dbRef = ref(getDatabase());
 	get(child(dbRef, "/Items/" + item1)).then((snapshot) => {
@@ -190,7 +194,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item1_price = childKey.price
-			total= item1_price
+			total = item1_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -203,7 +207,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item2_price = childKey.price
-			total= item1_price+ item2_price
+			total = item1_price + item2_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -216,7 +220,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item3_price = childKey.price
-			total= item1_price+item2_price+item3_price
+			total = item1_price + item2_price + item3_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -230,17 +234,19 @@ if (counter== 1) {
 	setTimeout(() => {
 		display_item1 = "<div class=" + class1 + "><img src='D' class='item_img'><h4 class='item_name'>" + item1 + "</h4><br><br><h5 id='price' class='price'>₹		" + item1_price + "</h5><br><hr class='line'></div>"
 		display_item2 = "<div class=" + class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'></div>"
-		display_item3 = "<div class=" + class3 + "><img src='D' class='item_img'><h4 class='item_name'>" + item3 + "</h4><br><br><h5 id='price' class='price'>₹		" + item3_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ "+ total+"</h3><button class= 'btn btn-success' id='checkout'>Checkout</button></div>"
+		display_item3 = "<div class=" + class3 + "><img src='D' class='item_img'><h4 class='item_name'>" + item3 + "</h4><br><br><h5 id='price' class='price'>₹		" + item3_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ " + total + "</h3><button class= 'btn btn-success' id='checkout' onclick='change()'>Checkout</button></div>"
 		document.getElementById('items').innerHTML += display_item1
 		document.getElementById('items').innerHTML += display_item2
 		document.getElementById('items').innerHTML += display_item3
-		document.getElementById("remove").addEventListener('click', ()=>{
-			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
-			items= []
+		document.getElementById("remove").addEventListener('click', () => {
+			document.getElementById("items").innerHTML = "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
+			items = []
 			localStorage.setItem("items", JSON.stringify(items))
+			
+
 		})
-		
-		loader.style.display= "none"
+		localStorage.setItem("total", total)
+		loader.style.display = "none"
 		page.style.opacity = 1
 	}, 2000);
 
@@ -254,13 +260,13 @@ if (counter== 1) {
 	item3 = items[2]
 	item4 = items[3]
 
-	class1= item1.split(" ").join("")
+	class1 = item1.split(" ").join("")
 	console.log(class1);
-	class2= item2.split(" ").join("")
+	class2 = item2.split(" ").join("")
 	console.log(class1);
-	class3= item3.split(" ").join("")
+	class3 = item3.split(" ").join("")
 	console.log(class1);
-	class4= item4.split(" ").join("")
+	class4 = item4.split(" ").join("")
 	console.log(class1);
 
 
@@ -274,7 +280,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item1_price = childKey.price
-			
+
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -311,7 +317,7 @@ if (counter== 1) {
 			console.log(snapshot.val());
 			childKey = snapshot.val()
 			item4_price = childKey.price
-			total= item1_price+item2_price+item3_price+item4_price
+			total = item1_price + item2_price + item3_price + item4_price
 			console.log(item1_price);
 		} else {
 			console.log("No data available");
@@ -319,26 +325,27 @@ if (counter== 1) {
 	}).catch((error) => {
 		console.error(error);
 	});
-	
+
 
 
 	//display
 	setTimeout(() => {
 		display_item1 = "<div class=" + class1 + "><img src='D' class='item_img'><h4 class='item_name'>" + item1 + "</h4><br><br><h5 id='price' class='price'>₹		" + item1_price + "</h5><br><hr class='line'></div>"
-		display_item2 = "<div class=" +class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'></div>"
-		display_item3 = "<div class=" +class3 + "><img src='D' class='item_img'><h4 class='item_name'>" + item3 + "</h4><br><br><h5 id='price' class='price'>₹		" + item3_price + "</h5><br><hr class='line'></div>"
-		display_item4 = "<div class=" +class4 + "><img src='D' class='item_img'><h4 class='item_name'>" + item4 + "</h4><br><br><h5 id='price' class='price'>₹		" + item4_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ "+ total+"</h3><button class= 'btn btn-success' id='checkout'>Checkout</button></div>"
+		display_item2 = "<div class=" + class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'></div>"
+		display_item3 = "<div class=" + class3 + "><img src='D' class='item_img'><h4 class='item_name'>" + item3 + "</h4><br><br><h5 id='price' class='price'>₹		" + item3_price + "</h5><br><hr class='line'></div>"
+		display_item4 = "<div class=" + class4 + "><img src='D' class='item_img'><h4 class='item_name'>" + item4 + "</h4><br><br><h5 id='price' class='price'>₹		" + item4_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id='remove'>Remove All Items</button></div><br><h3>Total : ₹ " + total + "</h3><button class= 'btn btn-success' id='checkout' onclick='change()'>Checkout</button></div>"
 		document.getElementById('items').innerHTML += display_item1
 		document.getElementById('items').innerHTML += display_item2
 		document.getElementById('items').innerHTML += display_item3
 		document.getElementById('items').innerHTML += display_item4
-		document.getElementById("remove").addEventListener('click', ()=>{
-			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
-			items= []
+		document.getElementById("remove").addEventListener('click', () => {
+			document.getElementById("items").innerHTML = "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
+			items = []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-		
-		loader.style.display= "none"
+		localStorage.setItem("total", total)
+
+		loader.style.display = "none"
 		page.style.opacity = 1
 	}, 2000);
 
@@ -351,22 +358,22 @@ if (counter== 1) {
 	item4 = items[3]
 	item5 = items[4]
 
-	class1= item1.split(" ").join("")
+	class1 = item1.split(" ").join("")
 	console.log(class1);
-	class2= item2.split(" ").join("")
+	class2 = item2.split(" ").join("")
 	console.log(class1);
-	class3= item3.split(" ").join("")
+	class3 = item3.split(" ").join("")
 	console.log(class1);
-	class4= item4.split(" ").join("")
+	class4 = item4.split(" ").join("")
 	console.log(class1);
-	class5= item5.split(" ").join("")
+	class5 = item5.split(" ").join("")
 	console.log(class1);
 
-	
+
 	const dbRef = ref(getDatabase());
 	get(child(dbRef, "/Items/" + item1)).then((snapshot) => {
 		if (snapshot.exists()) {
-		
+
 			childKey = snapshot.val()
 			item1_price = childKey.price
 		} else {
@@ -377,7 +384,7 @@ if (counter== 1) {
 	});
 	get(child(dbRef, "/Items/" + item2)).then((snapshot) => {
 		if (snapshot.exists()) {
-		
+
 			childKey = snapshot.val()
 			item2_price = childKey.price
 		} else {
@@ -388,7 +395,7 @@ if (counter== 1) {
 	});
 	get(child(dbRef, "/Items/" + item3)).then((snapshot) => {
 		if (snapshot.exists()) {
-		
+
 			childKey = snapshot.val()
 			item3_price = childKey.price
 		} else {
@@ -399,7 +406,7 @@ if (counter== 1) {
 	});
 	get(child(dbRef, "/Items/" + item4)).then((snapshot) => {
 		if (snapshot.exists()) {
-		
+
 			childKey = snapshot.val()
 			item4_price = childKey.price
 		} else {
@@ -410,17 +417,17 @@ if (counter== 1) {
 	});
 	get(child(dbRef, "/Items/" + item5)).then((snapshot) => {
 		if (snapshot.exists()) {
-		
+
 			childKey = snapshot.val()
 			item5_price = childKey.price
-			total= item1_price+item2_price+item3_price+item4_price+item5_price
+			total = item1_price + item2_price + item3_price + item4_price + item5_price
 		} else {
 			console.log("No data available");
 		}
 	}).catch((error) => {
 		console.error(error);
 	});
-		
+
 
 
 	//display
@@ -429,22 +436,29 @@ if (counter== 1) {
 		display_item2 = "<div class=" + class2 + "><img src='D' class='item_img'><h4 class='item_name'>" + item2 + "</h4><br><br><h5 id='price' class='price'>₹		" + item2_price + "</h5><br><hr class='line'></div>"
 		display_item3 = "<div class=" + class3 + "><img src='D' class='item_img'><h4 class='item_name'>" + item3 + "</h4><br><br><h5 id='price' class='price'>₹		" + item3_price + "</h5><br><hr class='line'></div>"
 		display_item4 = "<div class=" + class4 + "><img src='D' class='item_img'><h4 class='item_name'>" + item4 + "</h4><br><br><h5 id='price' class='price'>₹		" + item4_price + "</h5><br><hr class='line'></div>"
-		display_item5 = "<div class=" + class5 + "><img src='D' class='item_img'><h4 class='item_name'>" + item5 + "</h4><br><br><h5 id='price' class='price'>₹		" + item5_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id= 'remove'>Remove All Items</button></div><br><h3>Total : ₹ "+ total+"</h3><button class= 'btn btn-success' id='checkout'>Checkout</button></div>"
+		display_item5 = "<div class=" + class5 + "><img src='D' class='item_img'><h4 class='item_name'>" + item5 + "</h4><br><br><h5 id='price' class='price'>₹		" + item5_price + "</h5><br><hr class='line'><br><button class='btn btn-danger' id= 'remove'>Remove All Items</button></div><br><h3>Total : ₹ " + total + "</h3><button class= 'btn btn-success' id='checkout' onclick='change()'>Checkout</button></div>"
 		document.getElementById('items').innerHTML += display_item1
 		document.getElementById('items').innerHTML += display_item2
 		document.getElementById('items').innerHTML += display_item3
 		document.getElementById('items').innerHTML += display_item4
 		document.getElementById('items').innerHTML += display_item5
-		document.getElementById("remove").addEventListener('click', ()=>{
-			document.getElementById("items").innerHTML= "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
-			items= []
+		document.getElementById("remove").addEventListener('click', () => {
+			document.getElementById("items").innerHTML = "<center><h2 id='msg'>CART IS EMPTY</h2></center>"
+			items = []
 			localStorage.setItem("items", JSON.stringify(items))
 		})
-		
-		loader.style.display= "none"
+
+		loader.style.display = "none"
 		page.style.opacity = 1
+		localStorage.setItem("total", total)
 	}, 2000);
 
 }
 
 
+const toggleButton= document.getElementsByClassName('toggle-button')[0]
+const navbarLinks= document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', ()=> {
+    navbarLinks.classList.toggle('active')
+})
